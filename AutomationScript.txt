@@ -1,0 +1,57 @@
+
+package Google.GoogleMeet;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class ClassMeet {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("use-fake-ui-for-media-stream");
+		Map<String, Object> prefs = new HashMap<String, Object>();
+	    Map<String, Object> profile = new HashMap<String, Object>();
+	    Map<String, Object> contentSettings = new HashMap<String, Object>(); 
+	    contentSettings.put("notifications", 1);
+	    profile.put("managed_default_content_settings", contentSettings);
+	    prefs.put("profile", profile);
+	    option.setExperimentalOption("prefs", prefs);
+		WebDriver driver = new ChromeDriver(option);
+		driver.get("https://www.gmail.com");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.findElement(By.cssSelector("input[type=\"email\"]")).sendKeys("ananyaa3108@gmail.com");
+		driver.findElement(By.xpath("//button[@data-idom-class=\"nCP5yc AjY5Oe DuMIQc LQeN7 qIypjc TrZEUc lw1w4b\"]")).click();
+		driver.findElement(By.xpath("//div[@class=\"Xb9hP\"]/input[@type=\"password\"]")).sendKeys("Password@123");
+		driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/span")).click();
+		driver.get("https://apps.google.com/intl/en-GB/meet/");
+		driver.findElement(By.xpath("//*[@id=\"drawer\"]/div/div[3]/div[1]/div/span[1]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"i8\"]")).sendKeys("https://meet.google.com/eqm-izyn-gpg");
+		driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div[2]/div/div[1]/div[3]/div/div[2]/div[2]/button/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[14]/div[3]/div/div[2]/div[4]/div/div/div[1]/div[1]/div/div[6]/div[1]/div/div/div[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[14]/div[3]/div/div[2]/div[4]/div/div/div[1]/div[1]/div/div[6]/div[2]/div/div[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div[14]/div[3]/div/div[2]/div[4]/div/div/div[2]/div[1]/div[2]/div[1]/div[1]/button/div[3]")).click();
+		driver.findElement(By.xpath("//*[@id=\"yDmH0d\"]/div[3]/span/div[2]/div/div/div[2]/div/button/span")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"ow3\"]/div[1]/div/div[14]/div[3]/div[11]/div/div/div[3]/div/div[3]/div/div/span/button/i[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"bfTqV\"]")).sendKeys("Hello! Ananya here");
+		driver.findElement(By.xpath("//*[@id=\"ow3\"]/div[1]/div/div[14]/div[3]/div[4]/div[2]/div/div[2]/div/div[2]/div[1]/span/button/i")).click();
+	}
+
+}
+
