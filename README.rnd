@@ -1,0 +1,4 @@
+I've developed an automation script using Java and Selenium to join Google Classroom meetings.
+
+Pre Requisites- Eclipse
+To successfully execute the script, make sure to import the "pom.xml" file and the test script into your project.
